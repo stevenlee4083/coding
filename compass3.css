@@ -1,0 +1,161 @@
+/*Downloaded from https://www.codeseek.co/zgm/svg-compass-trying-to-fix-transform-origin-on-firefox-QjdBja */
+
+body {
+    background-color: #00b6d1;
+    background-image: url("http://www.transparenttextures.com/patterns/wavecut.png");
+    background-repeat: repeat;
+    background-position-x: 0%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    animation: background-animation 65s linear infinite;
+}
+
+@keyframes background-animation {
+    0% {
+        background-position-x: 0%;
+    }
+    100% {
+        background-position-x: 100%;
+    }
+}
+
+#outer-circle {
+    -webkit-transform-origin: -129.779px -130.18px;
+    -ms-transform-origin: -129.779px -130.18px;
+    transform-origin: -129.779px -130.18px;
+}
+
+div {
+    width: 400px;
+    margin: 50px auto;
+}
+
+svg {
+    width: 400px;
+    margin: 0 auto;
+}
+
+#circle-lines {
+    transform: scale(0);
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+#circle-lines #compass {
+    right: 0;
+}
+
+#outer-circle {
+    transform: scale(0);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 15px 15px;
+}
+
+#inner-circle-outer {
+    transform: scale(0);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 15px 15px;
+}
+
+#inner-circle-inner {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+}
+
+#ns-line-inner {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+}
+
+#ns-line-upper {
+    transform: scale(0);
+    transform-origin: 100% 100%;
+}
+
+#ns-line-lower {
+    transform: scale(0);
+    transform-origin: 0% 0%;
+}
+
+#ew-line-inner {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+}
+
+#ew-line-left {
+    transform: scale(0);
+    transform-origin: 100% 100%;
+}
+
+#ew-line-right {
+    transform: scale(0);
+    transform-origin: 0% 0%;
+}
+
+#compass-hands {
+    transform-origin: 50% 50%;
+}
+
+#lg-arrow-n {
+    transform-origin: bottom;
+}
+
+#lg-arrow-e {
+    transform-origin: left;
+}
+
+#lg-arrow-s {
+    transform-origin: top;
+}
+
+#lg-arrow-w {
+    transform-origin: right;
+}
+
+#wide-arrow-upper {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+}
+
+#wide-arrow-lower {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+}
+
+#outer-arrow-n {
+    transform: scale(0);
+    transform-origin: top;
+}
+
+#outer-arrow-e {
+    transform: scale(0);
+    transform-origin: right;
+}
+
+#outer-arrow-s {
+    transform: scale(0);
+    transform-origin: bottom;
+}
+
+#outer-arrow-w {
+    transform: scale(0);
+    transform-origin: left;
+}
+
+#outer-circle-line-nw {
+    transform-origin: 50% 50%;
+}
+
+#outer-circle-line-ne {
+    transform-origin: 50% 50%;
+}
+
+#outer-circle-line-sw {
+    transform-origin: 50% 50%;
+}
+
+#outer-circle-line-se {
+    transform-origin: 50% 50%;
+}

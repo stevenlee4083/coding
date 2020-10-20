@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>compass javascript application</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /*Downloaded from https://www.codeseek.co/diloabininyeri/compass-javascript-application-POGOgG */
+        
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        img {
+            width: 25vmin;
+            height: 25vmin;
+        }
+        
+        .rotate {
+            transition: all 5s;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="rotate" src="https://upload.wikimedia.org/wikipedia/commons/6/61/Compass_rose_transparent.png" alt="">
+    <script src="js/index.js"></script>
+    <script>
+        /*Downloaded from https://www.codeseek.co/diloabininyeri/compass-javascript-application-POGOgG */
+        var compas = document.querySelector(".rotate");
+        var e = 300;
+        window.addEventListener("deviceorientation", function(e) {
+            // compas.style.transformOrigin=e.alpha;
+            compas.style.transform = `rotate(${e.alpha}deg)`;
+        })
+    </script>
+</body>
+
+</html>

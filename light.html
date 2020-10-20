@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        .lamp {
+            height: 35px;
+            width: 30px;
+            position: absolute;
+            margin-left: 200px;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 30px;
+        }
+        
+        .lampRed {
+            background-color: red;
+        }
+        
+        .lampYellow {
+            background-color: yellow;
+        }
+        
+        .lampGreen {
+            background-color: green;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="trafficLight">
+        <div>Click to Start and Stop</div>
+        <div class="lamp" id="Red"></div>
+        <div class="lamp" id="Yellow"></div>
+        <div class="lamp" id="Green"></div>
+    </div>
+    <script>
+        var changeState = (function() {
+            var state = 0,
+                lamps = ["Red", "Yellow", "Green"],
+                lampsLength = lamps.length,
+                order = [
+                    [5000, "Red"],
+                    [3000, "Red", "Yellow"],
+                    [5000, "Green"],
+                    [3000, "Yellow"]
+                ],
+                orderLength = order.length,
+                lampIndex,
+                orderIndex,
+                sId;
+
+            return function(stop) {
+                if (stop) {
+                    clearTimeout(sId);
+                    return;
+                }
+
+                var lamp,
+                    lampDOM;
+
+                for (lampIndex = 0; lampIndex < lampsLength; lampIndex += 1) {
+                    lamp = lamps[lampIndex];
+                    lampDOM = document.getElementById(lamp);
+                    if (order[state].indexOf(lamp) !== -1) {
+                        lampDOM.classList.add("lamp" + lamp);
+                    } else {
+                        lampDOM.classList.remove("lamp" + lamp);
+                    }
+                }
+
+                sId = setTimeout(changeState, order[state][0]);
+                state += 1;
+                if (state >= orderLength) {
+                    state = 0;
+                }
+            };
+        }());
+
+        document.getElementById("trafficLight").addEventListener("click", (function() {
+            var state = false;
+
+            return function() {
+                changeState(state);
+                state = !state;
+            };
+        }()), false);
+    </script>
+</body>
+
+</html>

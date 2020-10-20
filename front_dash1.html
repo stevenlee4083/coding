@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        #topnav {
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        #topnav a {
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        input[type=text] {
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+        
+        .lamp {
+            height: 30px;
+            width: 30px;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 25px;
+        }
+        
+        .lampRed {
+            background-color: red;
+        }
+        
+        .lampYellow {
+            background-color: yellow;
+        }
+        
+        .lampGreen {
+            background-color: green;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="nav">
+        <div id="logo">
+            <img src="C:\Users\KJ컨설팅\Pictures\DSLabCompany.png" alt="logo">
+        </div>
+        <div id="nav_menu">
+            <ul id="topnav">
+                <li><a href="#">Network</a></li>
+                <li><a href="#">LAN</a></li>
+                <li><a href="#">IT</a></li>
+                <li><a href="#">OT</a></li>
+                <li><a href="#">Alert</a></li>
+            </ul>
+        </div>
+        <div id="Menu_select">Select Menu
+            <input type="text" placeholder="   Select Menu">
+        </div>
+    </div>
+    <div id="main_screen">
+        <div id=small_lamp>Left Right Lamp
+            <div id="trafficLight">
+                <div>Click to Start and Stop</div>
+                <div class="lamp" id="Red"></div>
+                <div class="lamp" id="Yellow"></div>
+                <div class="lamp" id="Green"></div>
+            </div>
+        </div>
+        <div id="B_pic">Ocean Blue</div>
+        <div id="bridgw_Sgip"></div>
+        <div id="itot">INS_many</div>
+    </div>
+    <div id="network">NMEA NETWORK
+        <p>NMEA 0183(IEC61161-1,2) Serial</p>
+        <p>NMEA-2000(IEC61162-3) CAN 250Kbps Bus</p>
+        <p>IEC61162-450,460 ETHERNET Bus</p>
+        <p>NTP TCP/IP Ship LAN Network</p>
+    </div>
+    <div id="five_boxes">
+        <p>ethernet</p>
+        <p>closed_device</p>
+        <p>campus</p>
+        <p>ECDIS</p>
+        <p>Dual_mirror</p>
+    </div>
+    <footer>
+        <p>Line</p>
+        <p>model_name</p>
+        <p>copyright</p>
+    </footer>
+    <script>
+        var changeState = (function() {
+            var state = 0,
+                lamps = ["Red", "Yellow", "Green"],
+                lampsLength = lamps.length,
+                order = [
+                    [5000, "Red"],
+                    [3000, "Red", "Yellow"],
+                    [5000, "Green"],
+                    [3000, "Yellow"]
+                ],
+                orderLength = order.length,
+                lampIndex,
+                orderIndex,
+                sId;
+
+            return function(stop) {
+                if (stop) {
+                    clearTimeout(sId);
+                    return;
+                }
+
+                var lamp,
+                    lampDOM;
+
+                for (lampIndex = 0; lampIndex < lampsLength; lampIndex += 1) {
+                    lamp = lamps[lampIndex];
+                    lampDOM = document.getElementById(lamp);
+                    if (order[state].indexOf(lamp) !== -1) {
+                        lampDOM.classList.add("lamp" + lamp);
+                    } else {
+                        lampDOM.classList.remove("lamp" + lamp);
+                    }
+                }
+
+                sId = setTimeout(changeState, order[state][0]);
+                state += 1;
+                if (state >= orderLength) {
+                    state = 0;
+                }
+            };
+        }());
+
+        document.getElementById("trafficLight").addEventListener("click", (function() {
+            var state = false;
+
+            return function() {
+                changeState(state);
+                state = !state;
+            };
+        }()), false);
+    </script>
+</body>
+
+</html>
